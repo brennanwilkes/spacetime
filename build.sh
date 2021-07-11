@@ -3,7 +3,7 @@
 ./stop.sh &2>/dev/null
 
 sudo docker build -t lmpsrv:latest .
-sudo docker container rm lmpsrv
+sudo docker container rm lmpsrv &2>/dev/null
 sudo docker create \
   --name=lmpsrv\
   -e TZ=PST \
@@ -19,3 +19,5 @@ sudo docker create \
 mkdir -p $( pwd )/LunaMultiplayer/{Config,Universe,Plugins,logs,Server}/
 chmod g+s $( pwd )/LunaMultiplayer/*/
 chmod o+s $( pwd )/LunaMultiplayer/*/
+
+cp ./config/* ./LunaMultiplayer/Config/
