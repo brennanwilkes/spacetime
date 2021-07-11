@@ -8,10 +8,6 @@ RUN wget $LMP_URL
 RUN unzip $LMP_FILENAME
 RUN rm -rf $LMP_FILENAME LMPClient LMP\ Readme.txt
 
-RUN ls -al
-RUN pwd
-RUN ls -al LMPServer
-
 WORKDIR LMPServer
 
 EXPOSE 8800/udp
