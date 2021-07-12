@@ -2,7 +2,13 @@
 
 ./stop.sh &2>/dev/null
 
-sudo docker build -t lmpsrv:latest .
+[ -z "$( uname -a | grep -io pi )" ] && {
+    DOCKERFILE=Dockerfile
+} || {
+    DOCKERFILE=Dockerfile_Pi
+}
+
+sudo docker build --file "$DOCKERFILE" -t lmpsrv:latest .
 sudo docker container rm lmpsrv &2>/dev/null
 sudo docker create \
   --name=lmpsrv\
